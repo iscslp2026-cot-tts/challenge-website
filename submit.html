@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ISCSLP 2026 CoT-TTS Challenge: Chain-of-Thought Reasoning for Context-Aware Text-to-Speech">
+    <title>Submit | ISCSLP 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,750&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" >
+      <a class="brand" href="index.html" aria-label="Go to overview">
+        <span class="brand-mark">COT</span>
+        <span>
+          <strong>CoT-TTS Challenge</strong>
+          <small>ISCSLP 2026</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Overview</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="resources.html">Data & Models</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpfl5xI0nBUQJxdKUBR28gNc4p3qWKz-i7frjGPSULGJuAfw/viewform?usp=dialog" target="_blank" rel="noreferrer">Register</a>
+        <a href="submit.html">Submit</a>
+        <a href="leaderboards.html">Leaderboards</a>
+        <a href="rules.html">Rules</a>
+        <a href="timeline.html">Timeline</a>
+        <a href="community.html">About us</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section-pad" id="submit">
+        <div class="container">
+          <div class="section-heading split reveal">
+            <div>
+              <p class="eyebrow">Submission portal</p>
+              <h2>System Submission</h2>
+            </div>
+            <p>
+              Team registration is handled separately through the official Google Form.
+              Please register your team by July 4, 2026 before the first submission round opens.
+            </p>
+          </div>
+          <div class="access-panel submission-notice reveal">
+            <div class="track-top">
+              <span class="tag">Before You Submit</span>
+              <span class="pill">Registration Required</span>
+            </div>
+            <h3>Complete Team Registration First</h3>
+            <p class="overview-note">
+              Use the registration form to provide your team name and primary contact.
+              This keeps submission records, rankings, and organizer communication aligned
+              once the upload window opens. Registration closes on July 4, 2026.
+            </p>
+            <div class="hero-actions registration-actions">
+              <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdpfl5xI0nBUQJxdKUBR28gNc4p3qWKz-i7frjGPSULGJuAfw/viewform?usp=dialog" target="_blank" rel="noreferrer">Open Registration Form</a>
+              <a class="btn ghost" href="timeline.html">Check Submission Dates</a>
+            </div>
+          </div>
+          <div class="submission-shell reveal">
+            <form class="submission-form submission-closed" aria-disabled="true">
+              <label>
+                Track
+                <select id="track" name="track" disabled>
+                  <option value="track1">Track 1 - Text Context</option>
+                  <option value="track2">Track 2 - Audio Context</option>
+                </select>
+              </label>
+              <label>
+                Category
+                <select id="category" name="category" disabled>
+                  <option value="small">Parameter-Constrained (&lt;1B)</option>
+                  <option value="unrestricted">Unrestricted</option>
+                </select>
+              </label>
+              <label>
+                Team name
+                <input id="team-name" name="teamName" type="text" placeholder="Example Team" required disabled>
+              </label>
+              <label>
+                Team member names
+                <input id="team-members" name="teamMembers" type="text" placeholder="Alice Chen, Bob Lee, Carol Wang" required disabled>
+              </label>
+              <label>
+                Contact email
+                <input id="contact-email" name="contactEmail" type="email" placeholder="team@example.com" required disabled>
+              </label>
+              <label>
+                Model name
+                <input id="model-name" name="modelName" type="text" placeholder="Example-COT-TTS-0.6B" required disabled>
+              </label>
+              <label>
+                Parameter count
+                <input id="params" name="params" type="number" min="1" placeholder="600000000" required disabled>
+              </label>
+              <label>
+                Submission package
+                <div class="file-upload-control">
+                  <input
+                    id="package"
+                    class="sr-only-file-input"
+                    name="package"
+                    type="file"
+                    accept=".zip,.tar,.gz"
+                    aria-describedby="package-status"
+                    disabled
+                  >
+                  <button class="btn ghost file-trigger" type="button" data-file-input="package" disabled>Choose File</button>
+                  <span class="file-upload-status" id="package-status">No file chosen</span>
+                </div>
+              </label>
+              <label class="wide">
+                External resources declaration
+                <textarea id="resources-note" name="resourcesNote" placeholder="Describe pretrained models, external data, APIs, or write 'None'." disabled></textarea>
+              </label>
+              <div class="form-actions wide">
+                <button class="btn primary" type="button" disabled>Submission Opens on July 10, 2026</button>
+                <button class="btn ghost" type="button" disabled>Coming Soon</button>
+              </div>
+            </form>
+            <aside class="status-card" aria-live="polite">
+              <h3>Submission Checklist</h3>
+              <ul class="checklist-list">
+                <li>
+                  <span class="check-icon" aria-hidden="true"></span>
+                  <div>
+                    <strong>Trained model / model checkpoints</strong>
+                    <p>Model checkpoints should include all parameters required for inference.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="check-icon" aria-hidden="true"></span>
+                  <div>
+                    <strong>Inference code</strong>
+                    <p>Inference code should be directly executable on the official evaluation set.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="check-icon" aria-hidden="true"></span>
+                  <div>
+                    <strong>Runtime environment configuration</strong>
+                    <p>Provide a Dockerfile, environment.yml, installation script, or equivalent runtime setup.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="check-icon" aria-hidden="true"></span>
+                  <div>
+                    <strong>System description document</strong>
+                    <p>Describe model architecture, training data, inference procedure, parameter scale, and external resources used.</p>
+                  </div>
+                </li>
+                <li>
+                  <span class="check-icon" aria-hidden="true"></span>
+                  <div>
+                    <strong>Inference dependencies</strong>
+                    <p>Include tokenizers, vocoders, auxiliary files, and any other resources required to run inference.</p>
+                  </div>
+                </li>
+              </ul>
+            </aside>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>ISCSLP 2026 COT-TTS Challenge</strong>
+          <p>Chain-of-thought reasoning, context understanding, and expressive speech generation.</p>
+        </div>
+        <div>
+          <span>Contact</span>
+          <a href="mailto:weixue@ust.hk">weixue@ust.hk</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

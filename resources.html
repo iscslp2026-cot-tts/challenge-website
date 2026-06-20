@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ISCSLP 2026 CoT-TTS Challenge: Chain-of-Thought Reasoning for Context-Aware Text-to-Speech">
+    <title>Data & Models | ISCSLP 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,750&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" >
+      <a class="brand" href="index.html" aria-label="Go to overview">
+        <span class="brand-mark">COT</span>
+        <span>
+          <strong>CoT-TTS Challenge</strong>
+          <small>ISCSLP 2026</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Overview</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="resources.html">Data & Models</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpfl5xI0nBUQJxdKUBR28gNc4p3qWKz-i7frjGPSULGJuAfw/viewform?usp=dialog" target="_blank" rel="noreferrer">Register</a>
+        <a href="submit.html">Submit</a>
+        <a href="leaderboards.html">Leaderboards</a>
+        <a href="rules.html">Rules</a>
+        <a href="timeline.html">Timeline</a>
+        <a href="community.html">About us</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section-pad tint" id="resources">
+        <div class="container">
+          <div class="section-heading split reveal">
+            <div>
+              <p class="eyebrow">Data & models</p>
+              <h2>Challenge Resources</h2>
+            </div>
+            <p>
+              This page provides the official training dataset and two baseline
+              models for Track 1 and Track 2.
+            </p>
+          </div>
+
+          <article class="resource-hero-card reveal">
+            <div class="resource-hero-copy">
+              <span>Official dataset</span>
+              <h3>Training Dataset</h3>
+              <p>
+                The official training release includes approximately 16K hours of
+                bilingual speech and around 3M segments for context-aware CoT-TTS
+                research and system development.
+              </p>
+              <div class="resource-actions">
+                <a class="btn primary" href="https://huggingface.co/datasets/HKUSTAudio/ISCSLP2026-CoT-TTS">Download Training Data</a>
+              </div>
+            </div>
+            <div class="resource-hero-meta">
+              <div class="resource-stats-grid">
+                <article>
+                  <span>English</span>
+                  <strong>~8.6K hours</strong>
+                  <small>About 1.62M segments of English speech data.</small>
+                </article>
+                <article>
+                  <span>Chinese</span>
+                  <strong>~7.4K hours</strong>
+                  <small>About 1.38M segments of Chinese speech data.</small>
+                </article>
+              </div>
+            </div>
+          </article>
+
+          <section class="section-block reveal delay-1" aria-labelledby="baseline-models-title">
+            <div class="section-heading compact-heading">
+              <h3 id="baseline-models-title">Baseline Models</h3>
+            </div>
+            <div class="resource-baseline-grid">
+              <article class="track-card">
+                <div class="track-top">
+                  <span class="tag">Track 1</span>
+                  <span class="pill">Text context</span>
+                </div>
+                <h3>Track 1 Baseline: Text-Context-Aware CoT-TTS</h3>
+                <p>
+                  A reproducible 0.6B Qwen3-style baseline with a three-stage training
+                  strategy for context-aware reasoning and speech generation.
+                </p>
+                <div class="track-detail">
+                  <strong>Context signal</strong>
+                  <p>Uses speaker-labeled textual dialogue context together with target text and reference speech.</p>
+                </div>
+                <div class="resource-actions">
+                  <a class="btn secondary" href="https://github.com/LuckyBian/ISCSLP2026-Challenge-baseline">GitHub Repo</a>
+                  <a class="btn ghost" href="https://drive.google.com/drive/folders/1kJYu4qlDp8ayzP3WXEht7-LrOTy6qeWY?usp=sharing">Download Model</a>
+                </div>
+              </article>
+              <article class="track-card accent">
+                <div class="track-top">
+                  <span class="tag">Track 2</span>
+                  <span class="pill">Audio context</span>
+                </div>
+                <h3>Track 2 Baseline: Audio-Context-Aware CoT-TTS</h3>
+                <p>
+                  A reproducible 0.6B Qwen3-style baseline with a three-stage training
+                  strategy for reasoning from acoustic dialogue history.
+                </p>
+                <div class="track-detail">
+                  <strong>Context signal</strong>
+                  <p>Uses continuous multi-speaker audio context together with target text and reference speech.</p>
+                </div>
+                <div class="resource-actions">
+                  <a class="btn secondary" href="https://github.com/LuckyBian/ISCSLP2026-Challenge-baseline">GitHub Repo</a>
+                  <a class="btn ghost" href="https://drive.google.com/drive/folders/1kJYu4qlDp8ayzP3WXEht7-LrOTy6qeWY?usp=sharing">Download Model</a>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section class="resource-note-card reveal delay-2" aria-labelledby="resource-release-note-title">
+            <h3 id="resource-release-note-title">Resource Release Note</h3>
+            <p>
+              All resources will be released through the official challenge website.
+              Models and data are provided for academic research and challenge
+              participation only. Submitted systems must include all required files
+              because official evaluation runs without internet access.
+            </p>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>ISCSLP 2026 COT-TTS Challenge</strong>
+          <p>Chain-of-thought reasoning, context understanding, and expressive speech generation.</p>
+        </div>
+        <div>
+          <span>Contact</span>
+          <a href="mailto:weixue@ust.hk">weixue@ust.hk</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

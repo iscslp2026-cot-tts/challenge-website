@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ISCSLP 2026 CoT-TTS Challenge: Chain-of-Thought Reasoning for Context-Aware Text-to-Speech">
+    <title>Evaluation | ISCSLP 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,750&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" >
+      <a class="brand" href="index.html" aria-label="Go to overview">
+        <span class="brand-mark">COT</span>
+        <span>
+          <strong>CoT-TTS Challenge</strong>
+          <small>ISCSLP 2026</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Overview</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="resources.html">Data & Models</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpfl5xI0nBUQJxdKUBR28gNc4p3qWKz-i7frjGPSULGJuAfw/viewform?usp=dialog" target="_blank" rel="noreferrer">Register</a>
+        <a href="submit.html">Submit</a>
+        <a href="leaderboards.html">Leaderboards</a>
+        <a href="rules.html">Rules</a>
+        <a href="timeline.html">Timeline</a>
+        <a href="community.html">About us</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section-pad" id="evaluation">
+        <div class="container evaluation-grid">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Evaluation</p>
+            <h2>Scores combine automatic, multimodal, and human judgment</h2>
+            <p>
+              Valid submissions pass format and runtime checks before official
+              evaluation. Final ranking combines objective metrics, multimodal
+              LLM assessment, and crowd-sourced listening tests.
+            </p>
+          </div>
+          <div class="score-formula reveal delay-1">
+            <span>Final Score</span>
+            <strong>0.3 S<sub>obj</sub> + 0.2 S<sub>LLM</sub> + 0.5 S<sub>human</sub></strong>
+          </div>
+          <div class="metric-list reveal delay-2">
+            <article>
+              <h3>Objective</h3>
+              <p>UTMOS, DNSMOS, CER/WER, speaker similarity, prosody, expression, RTF.</p>
+            </article>
+            <article>
+              <h3>LLM-based</h3>
+              <p>Context understanding, CoT reasoning coherence, informativeness, speech-reasoning consistency.</p>
+            </article>
+            <article>
+              <h3>Human</h3>
+              <p>Context-speech coherence, reasoning accuracy, naturalness, expressiveness.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>ISCSLP 2026 COT-TTS Challenge</strong>
+          <p>Chain-of-thought reasoning, context understanding, and expressive speech generation.</p>
+        </div>
+        <div>
+          <span>Contact</span>
+          <a href="mailto:weixue@ust.hk">weixue@ust.hk</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

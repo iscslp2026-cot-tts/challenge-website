@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ISCSLP 2026 CoT-TTS Challenge: Chain-of-Thought Reasoning for Context-Aware Text-to-Speech">
+    <title>Rules | ISCSLP 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,750&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+      .rules-doc {
+        padding-top: 120px;
+      }
+
+      .rules-doc-shell {
+        width: min(100%, 820px);
+        margin: 0 auto;
+      }
+
+      .rules-doc-header {
+        margin-bottom: 26px;
+      }
+
+      .rules-doc-header p:not(.eyebrow) {
+        max-width: none;
+        color: var(--muted);
+        font-size: 17px;
+      }
+
+      .rules-key-box {
+        margin: 0 0 28px;
+        padding: 20px 22px;
+        border: 1px solid var(--line);
+        border-left: 4px solid var(--moss-dark);
+        border-radius: 22px;
+        background: rgba(255, 250, 240, 0.74);
+        box-shadow: 0 14px 34px rgba(31, 44, 38, 0.06);
+      }
+
+      .rules-key-box strong {
+        display: inline-flex;
+        align-items: center;
+        min-height: 28px;
+        margin-bottom: 12px;
+        padding: 0 10px;
+        border-radius: 999px;
+        color: var(--paper-strong);
+        background: var(--moss-dark);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .rules-key-box ul,
+      .rules-doc-section ul,
+      .rules-doc-section ol {
+        margin: 0;
+        padding-left: 22px;
+      }
+
+      .rules-key-box li,
+      .rules-doc-section li {
+        color: var(--muted);
+        line-height: 1.7;
+      }
+
+      .rules-key-box li + li,
+      .rules-doc-section li + li {
+        margin-top: 8px;
+      }
+
+      .rules-doc-section {
+        padding: 26px 0;
+        border-top: 1px solid rgba(49, 95, 75, 0.12);
+      }
+
+      .rules-doc-section:first-of-type {
+        border-top: none;
+      }
+
+      .rules-doc-section h3 {
+        margin-bottom: 14px;
+        color: var(--moss-dark);
+        font-size: clamp(24px, 2.4vw, 30px);
+        line-height: 1.15;
+      }
+
+      .rules-doc-section h4 {
+        margin: 18px 0 8px;
+        color: var(--moss-dark);
+        font-size: 18px;
+        line-height: 1.3;
+      }
+
+      .rules-doc-section p {
+        margin: 0 0 14px;
+        color: var(--muted);
+        line-height: 1.75;
+      }
+
+      .rules-doc-section p:last-child {
+        margin-bottom: 0;
+      }
+
+      .rules-inline-warning {
+        font-weight: 800;
+        color: #7b3e2d;
+      }
+
+      .rules-subpoints {
+        margin-top: 10px;
+      }
+
+      @media (max-width: 720px) {
+        .rules-doc {
+          padding-top: 96px;
+        }
+
+        .rules-doc-shell {
+          width: min(100%, 100%);
+        }
+
+        .rules-key-box,
+        .rules-doc-section {
+          padding-left: 0;
+          padding-right: 0;
+        }
+
+        .rules-key-box {
+          padding: 18px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header" >
+      <a class="brand" href="index.html" aria-label="Go to overview">
+        <span class="brand-mark">COT</span>
+        <span>
+          <strong>CoT-TTS Challenge</strong>
+          <small>ISCSLP 2026</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Overview</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="resources.html">Data & Models</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpfl5xI0nBUQJxdKUBR28gNc4p3qWKz-i7frjGPSULGJuAfw/viewform?usp=dialog" target="_blank" rel="noreferrer">Register</a>
+        <a href="submit.html">Submit</a>
+        <a href="leaderboards.html">Leaderboards</a>
+        <a href="rules.html">Rules</a>
+        <a href="timeline.html">Timeline</a>
+        <a href="community.html">About us</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section-pad tint rules-doc" id="rules">
+        <div class="container">
+          <div class="rules-doc-shell">
+            <div class="section-heading rules-doc-header reveal">
+              <p class="eyebrow">Rules</p>
+              <h2>Challenge Rules</h2>
+              <p>
+                All submissions must be complete, reproducible, and directly executable by the organizers on the official hidden evaluation set. Each team must clearly specify its selected track and leaderboard category at submission time.
+              </p>
+            </div>
+
+            <section class="rules-key-box reveal delay-1" aria-labelledby="key-restrictions-title">
+              <strong id="key-restrictions-title">Key Restrictions</strong>
+              <ul>
+                <li><b>No cascaded ASR-LLM-TTS pipelines</b></li>
+                <li><b>No online APIs or remote model calls</b></li>
+                <li><b>RTF must be no greater than 3.0</b></li>
+                <li><b>Parameter-constrained submissions must use fewer than 1B inference-time parameters</b></li>
+                <li><b>All external resources must be declared</b></li>
+              </ul>
+            </section>
+
+            <section class="rules-doc-section reveal delay-1" aria-labelledby="tracks-and-categories-title">
+              <h3 id="tracks-and-categories-title">1. Tracks and Categories</h3>
+              <p>The challenge includes two tracks.</p>
+
+              <h4>Track 1: Text-Context-Aware CoT-TTS</h4>
+              <p>
+                Systems receive textual dialogue history, target text, and reference speech, and must generate both a reasoning analysis and the target speech waveform.
+              </p>
+
+              <h4>Track 2: Audio-Context-Aware CoT-TTS</h4>
+              <p>
+                Systems receive continuous historical dialogue audio, target text, and reference speech, and must generate both a reasoning analysis and the target speech waveform.
+              </p>
+
+              <p>Each track has two leaderboard categories.</p>
+
+              <h4>Unrestricted Category</h4>
+              <p>
+                There is no strict model-size limit. This category is intended for comparison with large-scale systems.
+              </p>
+
+              <h4>Parameter-Constrained Category</h4>
+              <p>
+                The total number of parameters used during inference must be fewer than 1B. All loaded or invoked modules count toward this limit, including frozen models, vocoders, speech tokenizers, speaker encoders, auxiliary models, and post-processing models.
+              </p>
+            </section>
+
+            <section class="rules-doc-section reveal delay-2" aria-labelledby="allowed-resources-title">
+              <h3 id="allowed-resources-title">2. Allowed Resources</h3>
+              <p>
+                Participants may use the official training and development data released by the organizers. Publicly available academic datasets and publicly available pretrained models are also allowed, provided that they are permitted for academic research.
+              </p>
+              <p>
+                External data must not contain, reconstruct, or derive from hidden evaluation sources.
+              </p>
+              <p>
+                All external datasets, pretrained models, synthetic data, data augmentation strategies, post-processing methods, and auxiliary resources must be clearly declared in the system description document.
+              </p>
+            </section>
+
+            <section class="rules-doc-section reveal delay-2" aria-labelledby="submission-requirements-title">
+              <h3 id="submission-requirements-title">3. Submission Requirements</h3>
+              <p>Each valid submission must include:</p>
+              <ul>
+                <li>Trained model or checkpoints</li>
+                <li>Inference code</li>
+                <li>Runtime environment configuration</li>
+                <li>System description document</li>
+              </ul>
+              <p class="rules-subpoints">
+                The inference code must be directly executable on the official evaluation set and must generate both reasoning outputs and speech waveforms for all test samples.
+              </p>
+              <p>
+                The runtime environment should include a Dockerfile, <code>environment.yml</code>, <code>requirements.txt</code>, or installation script.
+              </p>
+              <p>
+                All tokenizers, vocoders, speaker encoders, auxiliary files, and other resources required for inference must be included in the submitted package.
+              </p>
+            </section>
+
+            <section class="rules-doc-section reveal delay-3" aria-labelledby="prohibited-systems-title">
+              <h3 id="prohibited-systems-title">4. Prohibited Systems and Invalid Submissions</h3>
+              <p>
+                <span class="rules-inline-warning">Cascaded ASR-LLM-TTS pipelines are not allowed.</span> Participants may not call separate off-the-shelf ASR, LLM, TTS, voice conversion, or speech enhancement modules as a cascaded pipeline during inference, even if these modules are wrapped into a single submitted system.
+              </p>
+              <p>
+                <span class="rules-inline-warning">Online APIs or remote model calls are not allowed.</span> Official evaluation will be conducted without internet access.
+              </p>
+              <p>
+                Manual inspection, use, or reverse engineering of hidden test labels is prohibited. Participants must not attempt to identify, retrieve, reconstruct, or use the original source media corresponding to hidden evaluation samples.
+              </p>
+              <p>
+                Submissions with missing files, invalid formats, severe content mismatch, extremely low speech quality, incomplete generation, or official RTF greater than 3.0 may be excluded from official evaluation and final ranking.
+              </p>
+            </section>
+
+            <section class="rules-doc-section reveal delay-3" aria-labelledby="reasoning-output-title">
+              <h3 id="reasoning-output-title">5. Reasoning Output Requirements</h3>
+              <p>Each system must output a reasoning analysis for every test sample.</p>
+              <p>The reasoning should demonstrate:</p>
+              <ul>
+                <li>Contextual understanding</li>
+                <li>Internal logical coherence</li>
+                <li>Information richness</li>
+              </ul>
+              <p class="rules-subpoints">
+                Generic or template-like reasoning may receive a low reasoning-informativeness score even if it appears superficially correct.
+              </p>
+            </section>
+
+            <section class="rules-doc-section reveal delay-3" aria-labelledby="final-ranking-title">
+              <h3 id="final-ranking-title">6. Final Ranking Eligibility</h3>
+              <p>A submission is eligible for final ranking only if it satisfies all of the following conditions:</p>
+              <ul>
+                <li>Runs successfully in the official evaluation environment</li>
+                <li>Generates both reasoning and speech outputs</li>
+                <li>Follows the selected track and category constraints</li>
+                <li>Declares all external resources</li>
+                <li>Does not use prohibited cascaded systems or online APIs</li>
+                <li>Passes the basic validity check before detailed objective, LLM-based, and human evaluation</li>
+              </ul>
+            </section>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>ISCSLP 2026 COT-TTS Challenge</strong>
+          <p>Chain-of-thought reasoning, context understanding, and expressive speech generation.</p>
+        </div>
+        <div>
+          <span>Contact</span>
+          <a href="mailto:weixue@ust.hk">weixue@ust.hk</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

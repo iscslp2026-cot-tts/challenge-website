@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ISCSLP 2026 CoT-TTS Challenge: Chain-of-Thought Reasoning for Context-Aware Text-to-Speech">
+    <title>Leaderboards | ISCSLP 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,750&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" >
+      <a class="brand" href="index.html" aria-label="Go to overview">
+        <span class="brand-mark">COT</span>
+        <span>
+          <strong>CoT-TTS Challenge</strong>
+          <small>ISCSLP 2026</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Overview</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="resources.html">Data & Models</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpfl5xI0nBUQJxdKUBR28gNc4p3qWKz-i7frjGPSULGJuAfw/viewform?usp=dialog" target="_blank" rel="noreferrer">Register</a>
+        <a href="submit.html">Submit</a>
+        <a href="leaderboards.html">Leaderboards</a>
+        <a href="rules.html">Rules</a>
+        <a href="timeline.html">Timeline</a>
+        <a href="community.html">About us</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section-pad tint" id="leaderboards">
+        <div class="container">
+          <div class="section-heading split reveal">
+            <div>
+              <p class="eyebrow">Leaderboards</p>
+              <h2>Four Public Rankings</h2>
+            </div>
+          </div>
+          <div class="leaderboard-tabs reveal" role="tablist" aria-label="Leaderboards">
+            <button class="active" type="button" data-board="t1u">Track 1 / Unrestricted</button>
+            <button type="button" data-board="t1s">Track 1 / Constrained</button>
+            <button type="button" data-board="t2u">Track 2 / Unrestricted</button>
+            <button type="button" data-board="t2s">Track 2 / Constrained</button>
+          </div>
+          <div class="table-wrap reveal delay-1">
+            <table>
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Team</th>
+                  <th>Model</th>
+                  <th>Final</th>
+                  <th>Objective</th>
+                  <th>LLM</th>
+                  <th>Human</th>
+                  <th>RTF</th>
+                  <th>Params</th>
+                </tr>
+              </thead>
+              <tbody id="leaderboard-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>ISCSLP 2026 COT-TTS Challenge</strong>
+          <p>Chain-of-thought reasoning, context understanding, and expressive speech generation.</p>
+        </div>
+        <div>
+          <span>Contact</span>
+          <a href="mailto:weixue@ust.hk">weixue@ust.hk</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

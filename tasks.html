@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ISCSLP 2026 CoT-TTS Challenge: Chain-of-Thought Reasoning for Context-Aware Text-to-Speech">
+    <title>Tasks | ISCSLP 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,750&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" >
+      <a class="brand" href="index.html" aria-label="Go to overview">
+        <span class="brand-mark">COT</span>
+        <span>
+          <strong>CoT-TTS Challenge</strong>
+          <small>ISCSLP 2026</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Overview</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="resources.html">Data & Models</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpfl5xI0nBUQJxdKUBR28gNc4p3qWKz-i7frjGPSULGJuAfw/viewform?usp=dialog" target="_blank" rel="noreferrer">Register</a>
+        <a href="submit.html">Submit</a>
+        <a href="leaderboards.html">Leaderboards</a>
+        <a href="rules.html">Rules</a>
+        <a href="timeline.html">Timeline</a>
+        <a href="community.html">About us</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section-pad" id="tasks">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">Challenge tasks</p>
+            <h2>Challenge Description</h2>
+            <p>
+              Given dialogue context, target text, and a reference speech sample, the system should infer the reasoning analysis and generate a speech waveform that stays consistent with both the reasoning analysis  and the reference speaker's timbre.
+            </p>
+          </div>
+          <div class="challenge-badges reveal delay-1" aria-label="Challenge statistics">
+            <span>2 Tracks: Text &amp; Audio Context</span>
+            <span>Bilingual: English + Chinese</span>
+            <span>~16K Hours Training Data</span>
+            <span>~3M Segments</span>
+            <span>30% Objective + 20% LLM + 50% Human</span>
+          </div>
+
+          <section class="task-pipeline reveal delay-1" aria-labelledby="task-pipeline-title">
+            <div class="section-heading compact-heading evaluation-heading">
+              <h3 id="task-pipeline-title">Task Pipeline</h3>
+            </div>
+            <div class="pipeline-grid">
+              <article class="pipeline-step">
+                <span class="step-index">01</span>
+                <h4>Context Input</h4>
+                <p>Provide dialogue context, target text, and a reference speech sample as the conditioning signal for style inference.</p>
+              </article>
+              <article class="pipeline-step emphasis">
+                <span class="step-index">02</span>
+                <h4>CoT Reasoning</h4>
+                <p>Before synthesis, the causes and consequences are analyzed and the speaking style of the target audio is summarized.</p>
+              </article>
+              <article class="pipeline-step">
+                <span class="step-index">03</span>
+                <h4>Speech Generation</h4>
+                <p>Generate speech that preserves the reference speaker timbre while matching the inferred speaking manner and scene context.</p>
+              </article>
+            </div>
+          </section>
+
+          <div class="track-grid expanded-tracks">
+            <article class="track-card reveal delay-1">
+              <div class="track-top">
+                <span class="tag">Track 1</span>
+                <span class="pill">Text context</span>
+              </div>
+              <h3>Text-Context-Aware CoT-TTS</h3>
+              <p>
+                The model reads speaker-labeled dialogue history and infers the
+                target utterance's emotion, tone, rhythm, and communicative intent.
+              </p>
+              <div class="track-detail">
+                <strong>Input</strong>
+                <div class="input-tags">
+                  <span class="pill">Dialogue context</span>
+                  <span class="pill">Target text</span>
+                  <span class="pill">Reference speech</span>
+                </div>
+              </div>
+              <div class="track-detail">
+                <strong>Expected Output</strong>
+                <p>The system must generate both a reasoning analysis and an output audio waveform aligned with the inferred speaking style.</p>
+              </div>
+              <div class="track-detail">
+                <strong>Example</strong>
+              </div>
+              <pre><code>{
+  "context": ["speaker-0: I cannot believe this happened."],
+  "target_text": "Then we must act now.",
+  "reference_audio": "ref_speaker.wav"
+}
+
+{
+  "reasoning": "The previous turn signals shock and urgency, so the target sentence should sound decisive, tense, and action-oriented.",
+  "output_audio": "track1_prediction.wav"
+}</code></pre>
+            </article>
+            <article class="track-card accent reveal delay-2">
+              <div class="track-top">
+                <span class="tag">Track 2</span>
+                <span class="pill">Audio context</span>
+              </div>
+              <h3>Audio-Context-Aware CoT-TTS</h3>
+              <p>
+                The model listens to a continuous multi-speaker dialogue segment,
+                then generates the target speech in a coherent speaking style.
+              </p>
+              <div class="track-detail">
+                <strong>Input</strong>
+                <div class="input-tags">
+                  <span class="pill">Dialogue audio</span>
+                  <span class="pill">Target text</span>
+                  <span class="pill">Reference speech</span>
+                </div>
+              </div>
+              <div class="track-detail">
+                <strong>Expected Output</strong>
+                <p>The system must generate both a reasoning analysis and an output audio waveform aligned with the inferred speaking style.</p>
+              </div>
+              <div class="track-detail">
+                <strong>Example</strong>
+              </div>
+              <pre><code>{
+  "context_audio": "history_dialogue.wav",
+  "target_text": "Then we must act now.",
+  "reference_audio": "ref_speaker.wav"
+}
+
+{
+  "reasoning": "The acoustic context suggests escalating tension and shared urgency, so the response should be firm, immediate, and emotionally heightened.",
+  "output_audio": "track2_prediction.wav"
+}</code></pre>
+            </article>
+          </div>
+
+          <section class="section-block reveal delay-2" aria-labelledby="challenge-diff-title">
+            <div class="section-heading compact-heading evaluation-heading">
+              <h3 id="challenge-diff-title">What Makes This Challenge Different?</h3>
+            </div>
+            <div class="data-summary feature-grid">
+              <article>
+                <span>Focus</span>
+                <strong>Contextual Understanding</strong>
+                <small>The model must interpret evolving dialogue scenes instead of relying on isolated style labels.</small>
+              </article>
+              <article>
+                <span>Focus</span>
+                <strong>Explicit Reasoning</strong>
+                <small>Systems must expose why a sentence should be spoken in a certain way through a reasoning analysis.</small>
+              </article>
+              <article>
+                <span>Focus</span>
+                <strong>Speech-Reasoning Consistency</strong>
+                <small>The generated waveform should faithfully reflect the reasoning output rather than merely sounding natural.</small>
+              </article>
+            </div>
+          </section>
+
+          <section class="section-block reveal delay-3" aria-labelledby="evaluation-snapshot-title">
+            <div class="section-heading compact-heading evaluation-heading">
+              <div>
+                <h3 id="evaluation-snapshot-title">Evaluation Snapshot</h3>
+              </div>
+              <p>
+                The official evaluation is designed to measure both the quality of the generated speech and the reliability of the model's reasoning process. Each submission will be assessed through a unified pipeline that combines automatic speech metrics, multimodal LLM-based judgment, and human subjective evaluation, ensuring that the final ranking reflects naturalness, contextual appropriateness, reasoning quality, and speech-reasoning consistency.
+              </p>
+            </div>
+            <div class="metric-list task-metrics">
+              <article>
+                <h3>30% Objective Evaluation</h3>
+                <p>Speech quality, intelligibility, speaker similarity, prosody, expression, and efficiency.</p>
+              </article>
+              <article>
+                <h3>20% LLM-Based Evaluation</h3>
+                <p>Contextual understanding, internal logical coherence, and informativeness of the reasoning.</p>
+              </article>
+              <article>
+                <h3>50% Human Evaluation</h3>
+                <p>Contextual coherence, reasoning accuracy, informativeness, naturalness, and speech-reasoning consistency.</p>
+              </article>
+            </div>
+          </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>ISCSLP 2026 COT-TTS Challenge</strong>
+          <p>Chain-of-thought reasoning, context understanding, and expressive speech generation.</p>
+        </div>
+        <div>
+          <span>Contact</span>
+          <a href="mailto:weixue@ust.hk">weixue@ust.hk</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>

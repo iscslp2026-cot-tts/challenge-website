@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="ISCSLP 2026 CoT-TTS Challenge: Chain-of-Thought Reasoning for Context-Aware Text-to-Speech">
+    <title>FAQ | ISCSLP 2026</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,750&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <header class="site-header" >
+      <a class="brand" href="index.html" aria-label="Go to overview">
+        <span class="brand-mark">COT</span>
+        <span>
+          <strong>CoT-TTS Challenge</strong>
+          <small>ISCSLP 2026</small>
+        </span>
+      </a>
+      <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Primary navigation">
+        <a href="index.html">Overview</a>
+        <a href="tasks.html">Tasks</a>
+        <a href="resources.html">Data & Models</a>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSdpfl5xI0nBUQJxdKUBR28gNc4p3qWKz-i7frjGPSULGJuAfw/viewform?usp=dialog" target="_blank" rel="noreferrer">Register</a>
+        <a href="submit.html">Submit</a>
+        <a href="leaderboards.html">Leaderboards</a>
+        <a href="rules.html">Rules</a>
+        <a href="timeline.html">Timeline</a>
+        <a href="community.html">About us</a>
+        <a href="faq.html">FAQ</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section-pad tint" id="faq">
+        <div class="container">
+          <div class="section-heading reveal">
+            <p class="eyebrow">FAQ</p>
+            <h2>Frequently Asked Questions</h2>
+          </div>
+          <div class="faq-list reveal delay-1">
+            <details open>
+              <summary>What is the ISCSLP 2026 CoT-TTS Challenge?</summary>
+              <p>The ISCSLP 2026 CoT-TTS Challenge focuses on Chain-of-Thought Reasoning for Context-Aware Text-to-Speech. Given dialogue context, a target sentence, and a reference speech sample, participating systems are expected to infer how the target sentence should be spoken, generate an explicit reasoning analysis, and synthesize speech that matches both the context and the reference speaker's timbre.</p>
+            </details>
+            <details>
+              <summary>What does CoT-TTS mean?</summary>
+              <p>CoT-TTS stands for Chain-of-Thought Text-to-Speech. Instead of requiring users to manually provide style prompts such as "angry," "sad," or "excited," the system should reason from the previous context and decide the appropriate speaking style automatically.</p>
+            </details>
+            <details>
+              <summary>Who can participate in the challenge?</summary>
+              <p>The challenge is open to teams and individuals from academia and industry. Researchers, students, and engineers working on text-to-speech synthesis, speech foundation models, spoken dialogue systems, multimodal learning, and expressive speech generation are welcome to participate.</p>
+            </details>
+            <details>
+              <summary>How do we register for the challenge?</summary>
+              <p>Registration is handled through the official <a class="inline-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdpfl5xI0nBUQJxdKUBR28gNc4p3qWKz-i7frjGPSULGJuAfw/viewform?usp=dialog" target="_blank" rel="noreferrer">Google Form</a>. Teams should complete the form by July 4, 2026 so organizer-side registration and later system submissions stay matched correctly.</p>
+            </details>
+            <details>
+              <summary>What are the tracks in this challenge?</summary>
+              <p>The challenge contains two tracks. Track 1 is Text-Context-Aware CoT-TTS, where the system receives previous dialogue turns as speaker-labeled text. Track 2 is Audio-Context-Aware CoT-TTS, where the system receives the previous dialogue as a continuous audio segment.</p>
+            </details>
+            <details>
+              <summary>What should a submitted system generate?</summary>
+              <p>For each test sample, the system should generate two outputs: a reasoning analysis and a speech waveform. The reasoning analysis should explain the intended speaking manner of the target sentence, while the generated speech should preserve the reference speaker's timbre and remain consistent with the inferred speaking style.</p>
+            </details>
+            <details>
+              <summary>Can we use external datasets or pretrained models?</summary>
+              <p>Yes. Participants may use external datasets and publicly available pretrained models, as long as they are permitted for academic research. Any external data, pretrained models, synthetic data, data augmentation strategies, or post-processing methods must be clearly described in the system description paper.</p>
+            </details>
+            <details>
+              <summary>Are cascaded ASR-LLM-TTS systems allowed?</summary>
+              <p>No. Cascaded systems such as ASR-LLM-TTS pipelines are not allowed. Participants are expected to build end-to-end systems that directly perform context-aware reasoning and speech generation.</p>
+            </details>
+            <details>
+              <summary>What is the parameter-constrained category?</summary>
+              <p>Each track includes a parameter-constrained category for systems with fewer than 1B parameters during inference. This category is designed to encourage efficient modeling and make the challenge more accessible to teams with limited computational resources.</p>
+            </details>
+            <details>
+              <summary>How will submissions be evaluated?</summary>
+              <p>The final score will combine objective evaluation, LLM-based evaluation, and human subjective evaluation. Objective metrics will measure factors such as speech quality, intelligibility, speaker similarity, prosody, and efficiency. LLM-based evaluation will assess the reasoning output and its consistency with the generated speech. Human evaluation will focus on contextual coherence, reasoning accuracy, reasoning informativeness, and speech-reasoning consistency.</p>
+            </details>
+            <details>
+              <summary>What should be included in the submission?</summary>
+              <p>Each submission should include the inference code, runtime environment, trained model or checkpoints, and a short system description paper. The inference code must be executable on the official evaluation set and should generate both reasoning analyses and speech waveforms. The submitted system must run without internet access during official evaluation.</p>
+            </details>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div>
+          <strong>ISCSLP 2026 COT-TTS Challenge</strong>
+          <p>Chain-of-thought reasoning, context understanding, and expressive speech generation.</p>
+        </div>
+        <div>
+          <span>Contact</span>
+          <a href="mailto:weixue@ust.hk">weixue@ust.hk</a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
