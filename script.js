@@ -108,47 +108,100 @@ if (boardButtons.length && leaderboardBody) {
   });
 }
 
-submissionForm?.addEventListener("submit", (event) => {
+submissionForm?.addEventListener("submit", async (event) => {
   event.preventDefault();
   const data = new FormData(submissionForm);
-  const category = data.get("category");
+  const category = String(data.get("category") || "");
   const params = Number(data.get("params"));
   const team = String(data.get("teamName") || "").trim();
   const model = String(data.get("modelName") || "").trim();
   const file = data.get("package");
+  const submitButton = submissionForm.querySelector('button[type="submit"]');
 
-  submissionWarning.classList.remove("ok", "error");
+  submissionWarning?.classList.remove("ok", "error");
 
   if (!team || !model || !params) {
-    submissionWarning.textContent = "Please complete team name, model name, and parameter count.";
-    submissionWarning.classList.add("error");
+    if (submissionWarning) {
+      submissionWarning.textContent = "Please complete team name, model name, and parameter count.";
+      submissionWarning.classList.add("error");
+    }
     setStatus(1);
     return;
   }
 
   if (category === "small" && params >= 1_000_000_000) {
-    submissionWarning.textContent = "Parameter-constrained leaderboard requires parameter count below 1B.";
-    submissionWarning.classList.add("error");
+    if (submissionWarning) {
+      submissionWarning.textContent = "Parameter-constrained leaderboard requires parameter count below 1B.";
+      submissionWarning.classList.add("error");
+    }
     setStatus(1);
     return;
   }
 
   if (!file || !file.name) {
-    submissionWarning.textContent = "Metadata is valid. Upload a submission archive to continue smoke-test validation.";
-    submissionWarning.classList.add("ok");
+    if (submissionWarning) {
+      submissionWarning.textContent = "Please choose a submission archive before sending the form.";
+      submissionWarning.classList.add("error");
+    }
     setStatus(2);
     return;
   }
 
-  submissionWarning.textContent = `Submission package "${file.name}" passed the front-end checks and is ready for server validation.`;
-  submissionWarning.classList.add("ok");
-  setStatus(4);
+  submitButton?.setAttribute("disabled", "disabled");
+  if (submitButton) {
+    submitButton.textContent = "Submitting...";
+  }
+
+  try {
+    const response = await fetch("https://openspeech.hkgai.net/server_proxy/m_upload", {
+      method: "POST",
+      body: data
+    });
+
+    let result = null;
+    try {
+      result = await response.json();
+    } catch (_error) {
+      result = null;
+    }
+
+    if (!response.ok) {
+      throw new Error(result?.error || result?.message || "Submission failed");
+    }
+
+    if (submissionWarning) {
+      submissionWarning.textContent = result?.id
+        ? `Submission received successfully. Record ID: ${result.id}.`
+        : "Submission received successfully.";
+      submissionWarning.classList.add("ok");
+    }
+
+    submissionForm.reset();
+    const packageStatus = document.querySelector("#package-status");
+    if (packageStatus) {
+      packageStatus.textContent = "No file chosen";
+    }
+    setStatus(5);
+  } catch (error) {
+    if (submissionWarning) {
+      submissionWarning.textContent = error.message || "Submission failed. Please try again later.";
+      submissionWarning.classList.add("error");
+    }
+    setStatus(2);
+  } finally {
+    submitButton?.removeAttribute("disabled");
+    if (submitButton) {
+      submitButton.textContent = "Submit System";
+    }
+  }
 });
 
 submissionForm?.addEventListener("reset", () => {
   window.setTimeout(() => {
-    submissionWarning.classList.remove("ok", "error");
-    submissionWarning.textContent = "Select a track and category, then validate your package.";
+    submissionWarning?.classList.remove("ok", "error");
+    if (submissionWarning) {
+      submissionWarning.textContent = "Fill in the metadata and submit your system package for organizer review.";
+    }
     const packageStatus = document.querySelector("#package-status");
     if (packageStatus) {
       packageStatus.textContent = "No file chosen";

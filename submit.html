@@ -46,61 +46,60 @@
               <h2>System Submission</h2>
             </div>
             <p>
-              Team registration is handled separately through the official Google Form.
-              Please register your team by July 4, 2026 before the first submission round opens.
+              Submit your system metadata and the supporting materials needed for organizer review.
             </p>
           </div>
           <div class="access-panel submission-notice reveal">
             <div class="track-top">
-              <span class="tag">Before You Submit</span>
-              <span class="pill">Registration Required</span>
+              <span class="tag">Upload Tips</span>
+              <span class="pill">Recommended</span>
             </div>
-            <h3>Complete Team Registration First</h3>
+            <h3>Prepare a Lightweight Submission Package</h3>
             <p class="overview-note">
-              Use the registration form to provide your team name and primary contact.
-              This keeps submission records, rankings, and organizer communication aligned
-              once the upload window opens. Registration closes on July 4, 2026.
+              Large files are not recommended for direct upload. For model checkpoints and other large assets,
+              please provide a downloadable link in the external resources field. Package the remaining files
+              into a single zip archive before uploading.
             </p>
             <div class="hero-actions registration-actions">
-              <a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSdpfl5xI0nBUQJxdKUBR28gNc4p3qWKz-i7frjGPSULGJuAfw/viewform?usp=dialog" target="_blank" rel="noreferrer">Open Registration Form</a>
-              <a class="btn ghost" href="timeline.html">Check Submission Dates</a>
+              <a class="btn primary" href="rules.html">Review Submission Rules</a>
+              <a class="btn ghost" href="resources.html">Check Resources</a>
             </div>
           </div>
           <div class="submission-shell reveal">
-            <form class="submission-form submission-closed" aria-disabled="true">
+            <form class="submission-form" id="submission-form">
               <label>
                 Track
-                <select id="track" name="track" disabled>
+                <select id="track" name="track">
                   <option value="track1">Track 1 - Text Context</option>
                   <option value="track2">Track 2 - Audio Context</option>
                 </select>
               </label>
               <label>
                 Category
-                <select id="category" name="category" disabled>
+                <select id="category" name="category">
                   <option value="small">Parameter-Constrained (&lt;1B)</option>
                   <option value="unrestricted">Unrestricted</option>
                 </select>
               </label>
               <label>
                 Team name
-                <input id="team-name" name="teamName" type="text" placeholder="Example Team" required disabled>
+                <input id="team-name" name="teamName" type="text" placeholder="Example Team" required>
               </label>
               <label>
                 Team member names
-                <input id="team-members" name="teamMembers" type="text" placeholder="Alice Chen, Bob Lee, Carol Wang" required disabled>
+                <input id="team-members" name="teamMembers" type="text" placeholder="Alice Chen, Bob Lee, Carol Wang" required>
               </label>
               <label>
                 Contact email
-                <input id="contact-email" name="contactEmail" type="email" placeholder="team@example.com" required disabled>
+                <input id="contact-email" name="contactEmail" type="email" placeholder="team@example.com" required>
               </label>
               <label>
                 Model name
-                <input id="model-name" name="modelName" type="text" placeholder="Example-COT-TTS-0.6B" required disabled>
+                <input id="model-name" name="modelName" type="text" placeholder="Example-COT-TTS-0.6B" required>
               </label>
               <label>
                 Parameter count
-                <input id="params" name="params" type="number" min="1" placeholder="600000000" required disabled>
+                <input id="params" name="params" type="number" min="1" placeholder="600000000" required>
               </label>
               <label>
                 Submission package
@@ -112,29 +111,33 @@
                     type="file"
                     accept=".zip,.tar,.gz"
                     aria-describedby="package-status"
-                    disabled
                   >
-                  <button class="btn ghost file-trigger" type="button" data-file-input="package" disabled>Choose File</button>
+                  <button class="btn ghost file-trigger" type="button" data-file-input="package">Choose File</button>
                   <span class="file-upload-status" id="package-status">No file chosen</span>
                 </div>
+                <p class="overview-note">
+                  Do not upload very large model files directly. Put model checkpoints or other large assets in a shared link,
+                  and upload the rest of your submission as one zip file.
+                </p>
               </label>
               <label class="wide">
                 External resources declaration
-                <textarea id="resources-note" name="resourcesNote" placeholder="Describe pretrained models, external data, APIs, or write 'None'." disabled></textarea>
+                <textarea id="resources-note" name="resourcesNote" placeholder="Describe pretrained models, external data, APIs, or write 'None'."></textarea>
               </label>
               <div class="form-actions wide">
-                <button class="btn primary" type="button" disabled>Submission Opens on July 10, 2026</button>
-                <button class="btn ghost" type="button" disabled>Coming Soon</button>
+                <button class="btn primary" id="submit-button" type="submit">Submit System</button>
+                <button class="btn ghost" type="reset">Reset Form</button>
               </div>
+              <p class="overview-note wide" id="submission-warning">Fill in the metadata and submit your system package for organizer review.</p>
             </form>
             <aside class="status-card" aria-live="polite">
               <h3>Submission Checklist</h3>
-              <ul class="checklist-list">
+              <ul class="checklist-list" id="status-list">
                 <li>
                   <span class="check-icon" aria-hidden="true"></span>
                   <div>
                     <strong>Trained model / model checkpoints</strong>
-                    <p>Model checkpoints should include all parameters required for inference.</p>
+                    <p>Large model files are better provided as downloadable links instead of direct upload.</p>
                   </div>
                 </li>
                 <li>
@@ -162,7 +165,7 @@
                   <span class="check-icon" aria-hidden="true"></span>
                   <div>
                     <strong>Inference dependencies</strong>
-                    <p>Include tokenizers, vocoders, auxiliary files, and any other resources required to run inference.</p>
+                    <p>Package code, configs, documents, and other smaller files together into a single zip archive.</p>
                   </div>
                 </li>
               </ul>
