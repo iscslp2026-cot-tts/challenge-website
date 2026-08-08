@@ -153,7 +153,7 @@ submissionForm?.addEventListener("submit", async (event) => {
   }
 
   try {
-    const response = await fetch("https://openspeech.hkgai.net/server_proxy/m_upload", {
+    const response = await fetch("https://misty-voice-0f42.mattlong9266.workers.dev/upload", {
       method: "POST",
       body: data
     });
